@@ -1,0 +1,219 @@
+{% extends 'base.html' %}
+{% block title %} Home {% endblock %}
+
+{% block content %}
+<style>
+  .container{
+        padding-top: 30px;
+    }
+    /* .background{
+      background: radial-gradient(#fff,#ffd6d6);
+    } */
+</style>
+
+<section class="background">
+  <div class="size">
+
+    {% with messages=get_flashed_messages(with_categories=True) %}
+    {% if messages %}
+    {% for category,msg in messages %}
+      
+        <div class="alert alert-{{category}} alert-dismissible fade show  name" role="alert" >
+          <strong> {{msg}}</strong>
+          <button type="button" class="btn-close name1" data-bs-dismiss="alert" aria-label="close"></button>
+      </div>
+
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+
+    <div class="row2">
+      <div class="single">
+          <h1 >Give Your Workout <br> A New Style!</h1>
+          <p  style="color: #555;">Success isn't always about greatness.It's about consistency.Consistent <br> hardwork gains success.Greatness will come.</p>
+           <a href="{{url_for('register')}}"class="btn1">Get started</a>
+      </div>
+      <div class="single">
+        <div class="imagess">
+          <img src="{{ url_for('static',filename='images/smart.jpg') }}" >
+        </div>
+          
+      </div>
+    </div>
+  </div>
+  </section>
+  <div class="size2">
+<div class="features">
+  <h3>Featured products</h3>
+</div>
+<div class="products">
+  <div class="row1">
+    <div class="single">
+      <div class="card">
+        <div class="image">
+          <img src="{{url_for('static',filename='images/watch5.jpg')}}" alt="">
+        </div>
+      </div>
+    </div>
+    <div class="single">
+      <div class="card">
+        <div class="image">
+          <img src="{{url_for('static',filename='images/watch6.jpg')}}" alt="">
+        </div>
+      </div>
+    </div>
+    <div class="single">
+      <div class="card">
+        <div class="image">
+          <img src="{{url_for('static',filename='images/watch.jpg')}}" alt="">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="features">
+  <h3>Latest products</h3>
+</div>
+<div class="products">
+  <div class="row1">
+    <div class="single">
+      <div class="card">
+        <div class="image">
+          <img src="{{url_for('static',filename='images/shoe.jpg')}}" alt="">
+        </div>
+      </div>
+    </div>
+    <div class="single">
+      <div class="card">
+        <div class="image">
+          <img src="{{url_for('static',filename='images/shoe1.jpg')}}" alt="">
+        </div>
+      </div>
+    </div>
+    <div class="single">
+      <div class="card">
+        <div class="image">
+          <img src="{{url_for('static',filename='images/shoe2.jpg')}}" alt="">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- shoes -->
+
+
+<div class="categories">
+  <div class="features">
+    <h3>Categories</h3>
+  </div>
+  
+  <div class="cate">
+    <h4><span>|</span>Women Shoes</h4>
+  </div>
+</div>
+<div class="products">
+  <div class="row1">
+    {% for shoe in shoes %}
+    <div class="single">
+      <div class="card" style="width: 18rem;">
+        <img src=" {{shoe[1]}} " class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">{{shoe[3]}}</h5>
+          <p class="card-text">{{shoe[4]}}</p>
+          <a href="{{url_for('cart',id=shoe[0])}}" class="btn btn-primary">Buy Now</a>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+ 
+  </div>
+</div>
+
+<div class="categories">
+  <div class="cate">
+    <h4><span>|</span>Men Shoes</h4>
+  </div>
+</div>
+
+<div class="products">
+  <div class="row1">
+    {% for data in menshoes %}
+<div class="single">
+  <div class="card" style="width: 18rem;">
+    <img src=" {{data[1]}} " class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">{{data[3]}}</h5>
+      <p class="card-text">{{data[4]}}</p>
+      <a href="{{url_for('cart',id=data[0])}}" class="btn btn-primary">Buy Now</a>
+    </div>
+  </div>
+</div>
+{% endfor %}
+ 
+  </div>
+</div>
+
+<div class="categories">
+  <div class="cate">
+    <h4><span>|</span>Women Handbags</h4>
+  </div>
+</div>
+
+<div class="products">
+  <div class="row1">
+    {% for bag in bags %}
+<div class="single">
+  <div class="card" style="width: 18rem;">
+    <img src=" {{bag[1]}} " class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">{{bag[3]}}</h5>
+      <p class="card-text">{{bag[4]}}</p>
+      <a href="{{url_for('cart',id=bag[0])}}" class="btn btn-primary">Buy Now</a> 
+    </div>
+  </div>
+</div>
+{% endfor %}
+ 
+  </div>
+</div>
+
+
+
+
+<!-- end -->
+
+<!-- trousers -->
+<div class="categories">
+  <div class="cate">
+    <h4><span>|</span>Men Trousers</h4>
+  </div>
+</div>
+
+<div class="products">
+  <div class="row1">
+    {% for row in data %}
+    <div class="single">
+      <div class="card" style="width: 18rem;">
+        <img src=" {{row[1]}} " class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">{{row[3]}}</h5>
+          <p class="card-text">{{row[4]}}</p>
+          <a href="{{url_for('cart',id=row[0])}}" class="btn btn-primary">Buy Now</a> 
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+   
+  </div>
+</div>
+</div>
+<!-- end -->
+
+
+{% endblock %}
+
+
+{% block footer%}
+{% endblock %}

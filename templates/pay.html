@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block title %} Payment {% endblock %}
+
+{% block content %}
+
+<style>
+    .section{
+        height: 90vh;
+        background-image:linear-gradient( rgba(0,0,0,0.7),rgba(0,0,0,0.7),rgba(0,0,0,0.7) ),url("{{url_for('static',filename='images/bg2.jpg')}}") ;
+    }
+    .container{
+        padding-top: 30px;
+    }
+   
+</style>
+
+<div class="section">
+
+    <div class="container">
+        {% with messages=get_flashed_messages(with_categories=True) %}
+    {% if messages %}
+    {% for category,msg in messages %}
+    
+    <div class="alert alert-{{category}} alert-dismissible fade show  name" role="alert" >
+    <strong> {{msg}}</strong>
+    <button type="button" class="btn-close name1" data-bs-dismiss="alert" aria-label="close"></button>
+     </div>
+
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+    </div>
+
+    <div class="box3">
+        <h2>Make Payments</h2>
+        <form action="">
+        <input type="text" placeholder="Enter Username">
+        <input type="text" placeholder="Enter Your Phone Number" maxlength="10">
+        <input type="text" placeholder="Enter Amount">
+        <button type="submit" class="btn btn-success">Pay Now</button>
+    </form>
+    </div>
+    </div>
+    
+
+{% endblock %}
+

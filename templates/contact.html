@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block title %} Contact {% endblock %}
+
+{% block content %}
+<style>
+     .section{
+        height: 90vh;
+        /* background: radial-gradient(#fff,#ffd6d6); */
+      background-image:linear-gradient( rgba(0,0,0,0.7),rgba(0,0,0,0.7),rgba(0,0,0,0.7) ),url("{{url_for('static',filename='images/bg.jpg')}}") ; 
+     
+    } 
+    input{
+        border: 2px solid green;
+        color: #ffffff;
+    }
+</style>
+
+<div class="section">
+    <div class="contact">
+<div class="box3" >
+    <h2>Talk to us</h2>
+    {% with messages=get_flashed_messages(with_categories=True) %}
+    {% if messages %}
+    {% for category,msg in messages %}
+      
+        <div class="alert alert-{{category}} alert-dismissible fade show  name" role="alert" >
+          <strong> {{msg}}</strong>
+          <button type="button" class="btn-close name1" data-bs-dismiss="alert" aria-label="close"></button>
+      </div>
+
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+    
+    <form action="https://formspree.io/f/mbjbezwd" method="POST">
+            <input type="email" placeholder="Enter your email" name="email" required>
+            <textarea name="message" id="" cols="0" rows="5" placeholder="Type your message here..." required></textarea><br>
+            <button type="submit" class="btn btn-success">Send</button>
+        </form>
+    </div>
+    
+    
+</div>
+</div>
+
+{% endblock %}
+

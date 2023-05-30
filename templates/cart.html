@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block title %} Cart {% endblock %}
+
+{% block content %}
+<div style="height: 70vh;">
+<div class="shopping">
+    <a href="{{url_for('home')}}"><button type="button" class="btn btn-info">Continue shopping</button></a>
+</div>
+
+
+<div class="items">
+    <div class="table-responsive">
+    <table class="table table-bordered table-striped table-hovered" >
+        <thead>
+            <tr>
+                <th>Image</th>
+                <th>Description</th>
+                <th>Amount</th>
+                <th class="text text-center">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in output %}
+            <tr>
+                <td class="img"><img src="{{row[1]}}" alt=""></td>
+                <td>{{row[2]}}</td>
+                <td>{{row[4]}}</td>
+                <td class="text text-center"><a href="{{url_for('payment')}}"><button type="button" class="btn btn-success">Make Payment</button></a></td>
+            </tr>
+            {% endfor %}
+
+            
+        </tbody>
+    </table>
+</div>
+</div>
+</div>
+
+
+{{row}}
+
+
+{% endblock %}
+
